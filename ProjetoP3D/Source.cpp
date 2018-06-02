@@ -236,7 +236,7 @@ void init(void) {
 	
 
 	// Read our .obj file
-	bool res = loadOBJ("Iron_Man.obj", vertices, uvs, normals);
+	bool res = loadOBJ("Model/Iron_Man.obj", vertices, uvs, normals);
 	
 	// Generate 1 buffer, put the resulting identifier in vertexbuffer
 	glGenBuffers(1, &vertexBuffer);
