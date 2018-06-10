@@ -21,10 +21,13 @@
     <ClCompile Include="LoadShaders.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
-    <ClCompile Include="Controls.cpp">
+    <ClCompile Include="ObjLoader.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
-    <ClCompile Include="ObjLoader.cpp">
+    <ClCompile Include="VboIndexer.cpp">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
   </ItemGroup>
@@ -32,18 +35,24 @@
     <ClInclude Include="LoadShaders.hpp">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
-    <ClInclude Include="Controls.hpp">
+    <ClInclude Include="ObjLoader.hpp">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
-    <ClInclude Include="ObjLoader.hpp">
+    <ClInclude Include="VboIndexer.hpp">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="include\stb_image.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.hpp">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="triangles.vert">
+    <None Include="shaders\triangles.frag">
       <Filter>Arquivos de Recurso</Filter>
     </None>
-    <None Include="triangles.frag">
+    <None Include="shaders\triangles.vert">
       <Filter>Arquivos de Recurso</Filter>
     </None>
   </ItemGroup>

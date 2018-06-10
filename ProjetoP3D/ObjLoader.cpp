@@ -15,6 +15,18 @@ using namespace std;
 
 #include "ObjLoader.hpp"
 
+#include "include/stb_image.h"
+
+
+
+void loadMtlFile();
+void loadTexture();
+
+//GLuint textureID;
+string mtlFile;
+string textureFile;
+
+
 bool loadOBJ(
 	const char * path,
 	std::vector < glm::vec3 > & out_vertices,
@@ -26,6 +38,7 @@ bool loadOBJ(
 	std::vector< glm::vec3 > temp_vertices;
 	std::vector< glm::vec2 > temp_uvs;
 	std::vector< glm::vec3 > temp_normals;
+	
 
 	FILE * file = fopen(path, "r");
 		if (file == NULL) {
@@ -43,11 +56,11 @@ bool loadOBJ(
 
 				   // else : parse lineHeader
 
-		if (strcmp(lineHeader, "v") == 0) {
+		
+		else if (strcmp(lineHeader, "v") == 0) {
 			glm::vec3 vertex;
 			fscanf(file, "%f %f %f\n", &vertex.x, &vertex.y, &vertex.z);
 			temp_vertices.push_back(vertex);
-
 		}
 		else if (strcmp(lineHeader, "vt") == 0) {
 			glm::vec2 uv;
@@ -78,6 +91,14 @@ bool loadOBJ(
 			normalIndices.push_back(normalIndex[1]);
 			normalIndices.push_back(normalIndex[2]);
 		}
+		///MTL LOAD
+		/*else if (strcmp(lineHeader, "mtllib") == 0)
+		{
+			fscanf(file, "%s\n", &mtlFile);
+			loadMtlFile();
+		}
+		*/
+		
 
 		// For each vertex of each triangle
 		for (unsigned int i = 0; i < vertexIndices.size(); i++) {
@@ -101,3 +122,61 @@ bool loadOBJ(
 		}
 	}
 }
+
+//void loadMtlFile() {
+//
+//	mtlFile = "Model/" + mtlFile;
+//	const char * c = mtlFile.c_str();
+//	FILE * file = fopen(c, "r");
+//	
+//
+//	while (1) {
+//
+//		char lineHeader[128];
+//		// read the first word of the line
+//		int res = fscanf(file, "%s", lineHeader);
+//		if (res == EOF)
+//			break; // EOF = End Of File. Quit the loop.
+//
+//				   // else : parse lineHeader
+//
+//		
+//		if (strcmp(lineHeader, "map_Kd") == 0)
+//		{
+//			fscanf(file, "%s\n", &textureFile);
+//			loadTexture();
+//		}
+//
+//		
+//	}
+//}
+
+
+//void loadTexture() {
+//
+//	textureFile = "Model/" + textureFile;
+//	glGenTextures(1, &textureID);
+//
+//	// Bind the newly created texture
+//	glBindTexture(GL_TEXTURE_2D, textureID);
+//
+//	glUniform1i(textureID, 0);
+//
+//	// Nice trilinear filtering.
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+//
+//	// Activates image inversion
+//	stbi_set_flip_vertically_on_load(true);
+//
+//	int width, height, nChannels;
+//	unsigned char *imageData = stbi_load(textureFile.c_str(), &width, &height, &nChannels, 0);
+//
+//
+//	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_BGR, GL_UNSIGNED_BYTE, imageData);
+//
+//
+//	// Frees the image from memory
+//	stbi_image_free(imageData);
+//
+//}

@@ -111,19 +111,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Controls.cpp" />
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="LoadShaders.cpp" />
     <ClCompile Include="ObjLoader.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="VboIndexer.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Controls.hpp" />
+    <ClInclude Include="Camera.hpp" />
+    <ClInclude Include="include\stb_image.h" />
     <ClInclude Include="LoadShaders.hpp" />
     <ClInclude Include="ObjLoader.hpp" />
+    <ClInclude Include="VboIndexer.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="triangles.frag" />
-    <None Include="triangles.vert" />
+    <None Include="shaders\triangles.frag" />
+    <None Include="shaders\triangles.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
